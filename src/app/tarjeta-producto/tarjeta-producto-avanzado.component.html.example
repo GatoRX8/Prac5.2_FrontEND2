@@ -1,0 +1,68 @@
+<!-- 
+  EJEMPLO OPCIONAL: Versión mejorada con srcset y picture
+  Este archivo muestra cómo se podría mejorar el componente
+  usando etiquetas HTML avanzadas para imágenes responsivas
+-->
+
+<div class="tarjeta-producto">
+  <!-- Ejemplo con picture element para art direction -->
+  <div class="imagen-container">
+    <picture>
+      <!-- Versión desktop: imagen más amplia -->
+      <source 
+        media="(min-width: 992px)" 
+        srcset="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1200&h=900&fit=crop">
+      
+      <!-- Versión tablet: imagen media -->
+      <source 
+        media="(min-width: 600px)" 
+        srcset="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&h=600&fit=crop">
+      
+      <!-- Versión móvil: imagen pequeña (fallback) -->
+      <img 
+        src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=300&fit=crop" 
+        alt="Harley-Davidson Irish Edition"
+        class="imagen-producto"
+        loading="lazy">
+    </picture>
+  </div>
+  
+  <!-- Alternativa con srcset para diferentes resoluciones -->
+  <!-- 
+  <div class="imagen-container">
+    <img 
+      src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=300&fit=crop"
+      srcset="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=400&h=300&fit=crop 400w,
+              https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&h=600&fit=crop 800w,
+              https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1200&h=900&fit=crop 1200w"
+      sizes="(max-width: 600px) 100vw,
+             (max-width: 992px) 40vw,
+             400px"
+      alt="Harley-Davidson Irish Edition"
+      class="imagen-producto"
+      loading="lazy">
+  </div>
+  -->
+  
+  <div class="contenido">
+    <h2 class="titulo">{{ producto.titulo }}</h2>
+    <p class="descripcion">{{ producto.descripcion }}</p>
+    
+    <div class="referencias">
+      <p class="referencia-item">🏍️ {{ referencias.aceVisconti }}</p>
+      <p class="referencia-item">🤝 {{ referencias.joseTabata }}</p>
+    </div>
+    
+    <div class="precio-container">
+      <span class="precio-simbolo">$</span>
+      <span class="precio-valor">{{ producto.precio | number:'1.0-0' }}</span>
+      <span class="precio-moneda">{{ producto.moneda }}</span>
+    </div>
+    
+    <button class="boton-carrito" (click)="agregarAlCarrito()">
+      <span class="boton-icono">🛒</span>
+      <span class="boton-texto">Añadir al Carrito</span>
+    </button>
+  </div>
+</div>
+

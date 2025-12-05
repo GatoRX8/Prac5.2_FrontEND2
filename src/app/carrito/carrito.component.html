@@ -1,0 +1,49 @@
+<div class="carrito-wrapper">
+  <button class="carrito-boton" (click)="toggleCarrito()">
+    <span class="carrito-icono">🛒</span>
+    <span class="carrito-texto">Carrito</span>
+    <span class="carrito-contador" *ngIf="carritoService.obtenerCantidadTotal() > 0">
+      {{ carritoService.obtenerCantidadTotal() }}
+    </span>
+  </button>
+
+  <div class="carrito-panel" *ngIf="mostrarCarrito" [@slideIn]>
+    <div class="carrito-header">
+      <h3>Tu Carrito</h3>
+      <button class="cerrar-boton" (click)="toggleCarrito()">✕</button>
+    </div>
+
+    <div class="carrito-contenido" *ngIf="productosCarrito.length > 0">
+      <div class="carrito-item" *ngFor="let producto of productosCarrito">
+        <img [src]="producto.imagen" [alt]="producto.titulo" class="item-imagen">
+        <div class="item-info">
+          <h4>{{ producto.titulo }}</h4>
+          <p class="item-precio">${{ producto.precio | number:'1.0-0' }} MXN</p>
+          <div class="item-controles">
+            <button (click)="actualizarCantidad(producto.id, producto.cantidad - 1)">-</button>
+            <span>{{ producto.cantidad }}</span>
+            <button (click)="actualizarCantidad(producto.id, producto.cantidad + 1)">+</button>
+          </div>
+        </div>
+        <button class="eliminar-boton" (click)="eliminarProducto(producto.id)">🗑️</button>
+      </div>
+
+      <div class="carrito-footer">
+        <div class="total">
+          <span>Total:</span>
+          <span class="total-precio">${{ carritoService.obtenerTotal() | number:'1.0-0' }} MXN</span>
+        </div>
+        <button class="finalizar-boton" (click)="finalizarCompra()">Finalizar Compra</button>
+        <button class="vaciar-boton" (click)="vaciarCarrito()">Vaciar Carrito</button>
+      </div>
+    </div>
+
+    <div class="carrito-vacio" *ngIf="productosCarrito.length === 0">
+      <p>🛒 Tu carrito está vacío</p>
+      <p class="texto-secundario">¡Agrega algunas motos increíbles!</p>
+    </div>
+  </div>
+
+  <div class="carrito-overlay" *ngIf="mostrarCarrito" (click)="toggleCarrito()"></div>
+</div>
+

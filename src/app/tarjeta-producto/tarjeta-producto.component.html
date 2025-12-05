@@ -1,0 +1,34 @@
+<div class="tarjeta-producto">
+  <div class="imagen-container">
+    <img 
+      [src]="producto.imagen" 
+      [alt]="producto.titulo"
+      class="imagen-producto"
+      loading="lazy">
+    <div class="badge-categoria" *ngIf="producto.destacado">⭐ Destacado</div>
+  </div>
+  
+  <div class="contenido">
+    <div class="header-producto">
+      <h2 class="titulo">{{ producto.titulo }}</h2>
+      <span class="categoria-tag">{{ producto.categoria }}</span>
+    </div>
+    
+    <p class="descripcion">{{ producto.descripcion }}</p>
+    
+    <div class="precio-container">
+      <span class="precio-simbolo">$</span>
+      <span class="precio-valor">{{ producto.precio | number:'1.0-0' }}</span>
+      <span class="precio-moneda">{{ producto.moneda }}</span>
+    </div>
+    
+    <button 
+      class="boton-carrito" 
+      (click)="agregarAlCarrito()"
+      [class.agregado]="productoAgregado">
+      <span class="boton-icono">{{ productoAgregado ? '✓' : '🛒' }}</span>
+      <span class="boton-texto">{{ productoAgregado ? 'Agregado' : 'Añadir al Carrito' }}</span>
+    </button>
+  </div>
+</div>
+

@@ -1,0 +1,121 @@
+<div class="app-container">
+  <!-- Carrito flotante -->
+  <app-carrito></app-carrito>
+
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <h1>{{ title }}</h1>
+        <p class="subtitle">{{ subtitle }}</p>
+        <p class="location">📍 Tijuana, México</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección de características -->
+  <section class="caracteristicas">
+    <div class="caracteristica">
+      <span class="caracteristica-icono">🏍️</span>
+      <h3>Motos Premium</h3>
+      <p>Las mejores motos con toque irlandés</p>
+    </div>
+    <div class="caracteristica">
+      <span class="caracteristica-icono">🇮🇪</span>
+      <h3>Estilo Irlandés</h3>
+      <p>Diseños únicos inspirados en Irlanda</p>
+    </div>
+    <div class="caracteristica">
+      <span class="caracteristica-icono">⚡</span>
+      <h3>Alto Rendimiento</h3>
+      <p>Aprobadas por Ace Visconti</p>
+    </div>
+    <div class="caracteristica">
+      <span class="caracteristica-icono">🤝</span>
+      <h3>Calidad Garantizada</h3>
+      <p>Recomendadas por Jose Tabata</p>
+    </div>
+  </section>
+
+  <!-- Filtros de categoría -->
+  <section class="filtros">
+    <h2>Nuestro Catálogo</h2>
+    <div class="filtros-botones">
+      <button 
+        *ngFor="let categoria of categorias" 
+        [class.activo]="categoriaSeleccionada === categoria"
+        (click)="filtrarPorCategoria(categoria)"
+        class="filtro-boton">
+        {{ categoria }}
+      </button>
+    </div>
+  </section>
+  
+  <main class="main-content">
+    <div class="productos-grid">
+      <app-tarjeta-producto 
+        *ngFor="let producto of productosFiltrados"
+        [producto]="producto">
+      </app-tarjeta-producto>
+    </div>
+  </main>
+
+  <!-- Fundadores -->
+  <section class="fundadores-section">
+    <h2>Nuestros Fundadores</h2>
+    <div class="referencias-grid">
+      <div class="referencia-card fundador">
+        <div class="referencia-icono">👨‍💼</div>
+        <h3>Gael Ramses Escobedo Huerta</h3>
+        <p class="fundador-badge">Co-Fundador & CEO</p>
+        <p class="referencia-descripcion">Apasionado por las motos chopper, experto en diseño y estilo. Gael lidera la visión estética de Irish Motorcycles, asegurando que cada moto refleje el espíritu irlandés con elegancia y potencia.</p>
+      </div>
+      <div class="referencia-card fundador">
+        <div class="referencia-icono">👨‍💼</div>
+        <h3>Daniel Hernandez Mancilla</h3>
+        <p class="fundador-badge">Co-Fundador & CTO</p>
+        <p class="referencia-descripcion">Amante de las motos deportivas y la velocidad. Daniel aporta su experiencia técnica y conocimiento en alto rendimiento para ofrecer las mejores máquinas del mercado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referencias especiales -->
+  <section class="referencias-section">
+    <h2>Referencias Especiales</h2>
+    <div class="referencias-grid">
+      <div class="referencia-card">
+        <div class="referencia-icono">🏆</div>
+        <h3>Ace Visconti</h3>
+        <p>El maestro de las carreras</p>
+        <p class="referencia-descripcion">Experto en motociclismo de alta velocidad, inspector oficial de nuestra colección premium.</p>
+      </div>
+      <div class="referencia-card">
+        <div class="referencia-icono">🤝</div>
+        <h3>Jose Tabata</h3>
+        <p>Nuestro panita de confianza</p>
+        <p class="referencia-descripcion">Probador oficial y embajador de la marca en las calles de Tijuana.</p>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>🏍️ Irish Motorcycles Tijuana</h3>
+        <p>La mejor selección de motos con estilo irlandés</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <p>📍 Tijuana, México</p>
+        <p>📧 info&#64;irishmotostj.com</p>
+        <p>📞 +52 664 123 4567</p>
+      </div>
+      <div class="footer-section">
+        <h4>Desarrolladores</h4>
+        <p>Gael Ramses Escobedo Huerta</p>
+        <p>Daniel Hernandez Mancilla</p>
+        <p class="footer-year">© 2024</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
